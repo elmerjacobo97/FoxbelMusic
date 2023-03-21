@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.dark-red-secondary {
+    background-color: #662323;
+}
+
+.main-color {
+    background-color: #E5E5E5;
+}
+
+.light-red-primary {
+    background-color: #EB5757;
+}
+
+.light-red-primary-text {
+    color: #EB5757;
+}
+
+    /* Cambiar el color de los íconos a rojo */
+.rhap_main-controls-button svg,
+.rhap_additional-controls-button svg,
+.rhap_volume-controls svg {
+    color: white !important;
+}
+
+.rhap_progress-section {
+    justify-content: center!important;
+}
+.rhap_horizontal .rhap_controls-section {
+    margin-left : 0!important;
+}
+
+.rhap_volume-indicator,
+.rhap_volume-bar {
+    background-color: white!important;
+}
+.gap-x-44 {
+    column-gap: 10.7rem!important;
+}
