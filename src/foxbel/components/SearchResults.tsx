@@ -2,6 +2,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlay} from "@fortawesome/free-solid-svg-icons";
 import {Song} from "../interfaces/deezer.interfaces";
 
+
 interface Props {
     song: Song;
     handleSongClick: (song: Song) => void;
@@ -17,8 +18,8 @@ export const SearchResults = ({ song, handleSongClick }: Props) => {
             <div className="relative">
                 <img
                     src={song.album.cover_medium}
-                    alt={song.album.title}
                     className="w-full"
+                    alt={song.album.title}
                 />
                 <button
                     className="absolute top-1/2 left-1/2 -mt-6 -ml-6 rounded-full shadow-md"

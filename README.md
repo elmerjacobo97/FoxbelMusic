@@ -2,7 +2,7 @@
 
 ## Live demo
 
-[https://elegant-sunburst-f3839a.netlify.app/](https://elegant-sunburst-f3839a.netlify.app/)
+[https://iridescent-naiad-726474.netlify.app/](https://iridescent-naiad-726474.netlify.app/)
 
 ## User flow
 
@@ -36,7 +36,7 @@ npm run dev
 yarn dev
 ```
 ```
-Agregar variables de entorno en un archivo .env
+Agregar variables de entorno en un archivo .env.local
 https://api.deezer.com
 ```
 
