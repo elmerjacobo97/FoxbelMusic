@@ -1,6 +1,6 @@
 import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
 import {FoxbelLayout} from "./foxbel/layout/FoxbelLayout";
-import {Search} from "./foxbel/pages";
+import {Albums, Artist, Search} from "./foxbel/pages";
 
 function App() {
     return (
@@ -8,6 +8,8 @@ function App() {
             <Routes>
                 <Route path="/" element={<FoxbelLayout />} >
                     <Route index element={<Search />} />
+                    <Route path={'search/album'} element={<Albums />} />
+                    <Route path={'search/artist'} element={<Artist />} />
                     <Route path="/*" element={<Navigate to="/" />} />
                 </Route>
             </Routes>

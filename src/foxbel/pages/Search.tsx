@@ -1,4 +1,4 @@
-import {FormEvent, useState} from 'react';
+import {FormEvent, useEffect, useState} from 'react';
 import {CurrentSong, InputSearch, SearchResults} from "../components";
 import {Song} from "../interfaces/deezer.interfaces";
 import 'react-h5-audio-player/lib/styles.css';
@@ -9,30 +9,40 @@ export const Search = () => {
     const [songs, setSongs] = useState<Song[]>(
         localStorage.getItem('songs') ? JSON.parse(localStorage.getItem('songs')!) : []
     );
+    const [song, setSong] = useState<Song>({
+        album: {cover_medium: "", title: ""},
+        artist: {name: ""},
+        id: 0, title: ""
+    });
     const [currentSong, setCurrentSong] = useState(null);
+
+    useEffect(() => {
+        try {
+            const getSearchSongs = async () => {
+                const { data: { data } } = await deezerApi.get(`/search?q=${searchTerm}`);
+                if (data === undefined) return;
+                setSongs(data);
+                localStorage.setItem('songs', JSON.stringify(data));
+            }
+            getSearchSongs();
+        } catch (e) {
+            console.log(e);
+        }
+    }, [searchTerm]);
+
 
     const handleSearch = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-
         if (searchTerm.trim() === '') return;
-
-        deezerApi.get(`/search?q=${searchTerm}&limit=1000`)
-            .then(({ data: { data } }) => {
-                setSongs(data);
-                localStorage.setItem('songs', JSON.stringify(data));
-            })
-            .catch(error => {
-                console.error(error);
-            });
-        setSearchTerm('');
     };
 
     const handleSongClick = (song: any) => {
+        setSong(song);
         setCurrentSong(song.preview);
     };
 
     return (
-        <div>
+        <>
             <form onSubmit={handleSearch}>
                 <div className="relative max-w-2xl">
                     <InputSearch
@@ -59,11 +69,11 @@ export const Search = () => {
 
             {currentSong && (
                 <CurrentSong
-                    songs={songs}
+                    song={song}
                     currentSong={currentSong}
                     setCurrentSong={setCurrentSong}
                 />
             )}
-        </div>
+        </>
     );
 }

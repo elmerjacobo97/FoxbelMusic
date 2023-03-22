@@ -1,20 +1,21 @@
 import AudioPlayer, {RHAP_UI} from "react-h5-audio-player";
-import React from "react";
+import {Song} from "../interfaces/deezer.interfaces";
 
 interface Props {
-    songs: any;
-    currentSong: any;
-    setCurrentSong: (e: any) => void;
+    song: Song;
+    currentSong: string;
+    setCurrentSong: (e: null) => void;
 }
 
-export const CurrentSong = ({songs, currentSong, setCurrentSong}: Props) => {
+export const CurrentSong = ({currentSong, setCurrentSong, song}: Props) => {
+
     return (
-        <div className="fixed bottom-0 left-0 w-full light-red-primary flex justify-center gap-x-44 animate__animated  animate__fadeInUp">
-            <div className="flex gap-x-3 items-center">
-                <img className="w-20" src={songs[1].album.cover_medium} alt=""/>
+        <div className="fixed bottom-0 left-0 w-full light-red-primary flex gap-x-44 animate__animated animate__fadeInUp">
+            <div className="flex gap-x-3 items-center w-full">
+                <img className="w-20" src={song.album.cover_medium} alt=""/>
                 <div className="text-white">
-                    <p className="block">Artista</p>
-                    <p>Canción</p>
+                    <p>{ song.artist.name }</p>
+                    <p>{ song.title }</p>
                 </div>
             </div>
             <AudioPlayer

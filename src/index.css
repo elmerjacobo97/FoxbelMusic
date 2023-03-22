@@ -25,9 +25,6 @@
     color: white !important;
 }
 
-.rhap_progress-section {
-    justify-content: center!important;
-}
 .rhap_horizontal .rhap_controls-section {
     margin-left : 0!important;
 }
@@ -37,5 +34,9 @@
     background-color: white!important;
 }
 .gap-x-44 {
-    column-gap: 10.7rem!important;
+    column-gap: 0.7rem!important;
+}
+
+.active {
+    color: #EB5757!important;
 }
